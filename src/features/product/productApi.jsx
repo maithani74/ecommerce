@@ -6,6 +6,14 @@ export function fetchAllProducts() {
     });
   }
 
+export function fetchProductById(id) {
+    return new Promise(async (resolve) => {
+      const res = await fetch(" http://localhost:8080/products/"+id);
+      const data = await res.json();
+      resolve({data});
+    });
+  }
+
   
 export function fetchProductsByFilters(filter,sort,pagination) {
     let queryString='';
