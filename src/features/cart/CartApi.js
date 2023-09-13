@@ -1,12 +1,12 @@
-export function addToCart(items) {
+export function addToCart(item) {
   return new Promise(async (resolve) => {
     const res = await fetch("http://localhost:8080/cart",{
       method:"POST",
-      body:JSON.stringify(items),
+      body:JSON.stringify(item),
       headers:{"content-type":"application/json"}
     });
     const data = await res.json();
-    resolve(data);
+    resolve({data});
   });
 }
 
@@ -26,6 +26,16 @@ export function updateCart(update) {
       headers:{"content-type":"application/json"}
     });
     const data = await res.json();
-    resolve(data);
+    resolve({data});
+  });
+}
+export function deleteItemFromCart(itemId) {
+  return new Promise(async (resolve) => {
+    const res = await fetch("http://localhost:8080/cart/"+itemId,{
+      method:"DELETE",
+      headers:{"content-type":"application/json"}
+    });
+    const data = await res.json();
+    resolve({data:{id:itemId}});
   });
 }

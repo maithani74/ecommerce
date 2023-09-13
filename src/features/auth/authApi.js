@@ -7,7 +7,7 @@ export function createUser(userData) {
       headers:{"content-type":"application/json"}
     });
     const data = await res.json();
-    resolve(data);
+    resolve({data});
   });
 }
 
@@ -28,5 +28,17 @@ export function checkUser(loginInfo) {
     }else{
       reject({message:"user not Found"})
     }
+  });
+}
+
+export function updateUser(update) {
+  return new Promise(async (resolve) => {
+    const res = await fetch("http://localhost:8080/users/"+update.id,{
+      method:"PATCH",
+      body:JSON.stringify(update),
+      headers:{"content-type":"application/json"}
+    });
+    const data = await res.json();
+    resolve({data});
   });
 }
