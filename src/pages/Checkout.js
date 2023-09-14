@@ -1,26 +1,39 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItemFromCartAsync, selectItems, updateCartAsync } from "../features/cart/CartSlice";
+import {
+  deleteItemFromCartAsync,
+  selectItems,
+  updateCartAsync,
+} from "../features/cart/CartSlice";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {selectLoggedInUser, updateUserAsync} from '../features/auth/authSlice'
-import { createOrderAsync } from "../features/order/orderSlice";
+import {
+  selectLoggedInUser,
+  updateUserAsync,
+} from "../features/auth/authSlice";
+import {
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
 function Checkout() {
   const [open, setOpen] = useState(true);
   const items = useSelector(selectItems);
-  const totalAmount = items.reduce((amount,item)=>item.price*item.quantity + amount,0);
-  const totalItems = items.reduce((total,item)=>total+item.quantity,0);
-  const dispatch = useDispatch()
-  const user = useSelector(selectLoggedInUser)
-  const handleQty=((e,item)=>{
-    dispatch( updateCartAsync({...item,quantity:+e.target.value}))
-  }) 
-  const handleRemove=((e,id)=>{
-   dispatch( deleteItemFromCartAsync(id))
-  })
-  const [selectedAddress,setSelectedAddress] = useState(null);
-  const [paymentMethod,setPaymentMethod] = useState('cash');
+  const totalAmount = items.reduce(
+    (amount, item) => item.price * item.quantity + amount,
+    0
+  );
+  const totalItems = items.reduce((total, item) => total + item.quantity, 0);
+  const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
+  const handleQty = (e, item) => {
+    dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
+  };
+  const handleRemove = (e, id) => {
+    dispatch(deleteItemFromCartAsync(id));
+  };
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const {
     register,
@@ -28,39 +41,56 @@ function Checkout() {
     watch,
     reset,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
+  const currentOrder = useSelector(selectCurrentOrder);
 
-  const handleAddress=((e)=>{
+  const handleAddress = (e) => {
     console.log(e.target.value);
-    setSelectedAddress(user.addresses[ e.target.value]);
-  })
+    setSelectedAddress(user.addresses[e.target.value]);
+  };
 
-
-  const handlePayment=((e)=>{
+  const handlePayment = (e) => {
     console.log(e.target.value);
-    setPaymentMethod( e.target.value);
-  })
+    setPaymentMethod(e.target.value);
+  };
 
-
-  const handleOrder=((e)=>{
-    const order = {items,totalAmount,totalItems,user,paymentMethod,selectedAddress};
-    dispatch(createOrderAsync(order))
-  })
+  const handleOrder = (e) => {
+    const order = {
+      items,
+      totalAmount,
+      totalItems,
+      user,
+      paymentMethod,
+      selectedAddress,
+      status: "pending",
+    };
+    dispatch(createOrderAsync(order));
+  };
   return (
     <>
-    {
-       !items.length && <Navigate to="/" replace={true}></Navigate>
-      }
+      {!items.length && <Navigate to="/" replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/order-success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
-            <form className="bg-white px-5 py-4 mt-12"  onSubmit={handleSubmit((data)=>{
-              dispatch(
-              updateUserAsync({...user,addresses:[...user.addresses,data]})
-                 )
-                 reset()
-            })}>
+            <form
+              className="bg-white px-5 py-4 mt-12"
+              onSubmit={handleSubmit((data) => {
+                dispatch(
+                  updateUserAsync({
+                    ...user,
+                    addresses: [...user.addresses, data],
+                  })
+                );
+                reset();
+              })}
+            >
               <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
                   <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -81,14 +111,15 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          {...register('name',{required:'Name is required'})}
+                          {...register("name", {
+                            required: "Name is required",
+                          })}
                           id="Name"
                           autoComplete="given-name"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
                     </div>
-
 
                     <div className="sm:col-span-4">
                       <label
@@ -100,8 +131,9 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           id="email"
-                          
-                          {...register('email',{required:'Email is required'})}
+                          {...register("email", {
+                            required: "Email is required",
+                          })}
                           type="email"
                           autoComplete="email"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -114,14 +146,16 @@ function Checkout() {
                         htmlFor="phone"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
-                        Phone  
+                        Phone
                       </label>
                       <div className="mt-2">
                         <input
                           id="phone"
-                         type='tel'
-                          {...register('phone',{required:'Phone Number is required'})}>
-                        </input>
+                          type="tel"
+                          {...register("phone", {
+                            required: "Phone Number is required",
+                          })}
+                        ></input>
                       </div>
                     </div>
 
@@ -135,7 +169,9 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          {...register('street',{required:'Address is required'})}
+                          {...register("street", {
+                            required: "Address is required",
+                          })}
                           id="street-address"
                           autoComplete="street-address"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -153,8 +189,9 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          
-                          {...register('city',{required:'City is required'})}
+                          {...register("city", {
+                            required: "City is required",
+                          })}
                           id="city"
                           autoComplete="address-level2"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -172,8 +209,9 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          
-                          {...register('state',{required:'State is required'})}
+                          {...register("state", {
+                            required: "State is required",
+                          })}
                           id="region"
                           autoComplete="address-level1"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -191,8 +229,9 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          
-                          {...register('pincode',{required:'Pincode is required'})}
+                          {...register("pincode", {
+                            required: "Pincode is required",
+                          })}
                           id="postal-code"
                           autoComplete="postal-code"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -223,20 +262,20 @@ function Checkout() {
                     Chosse from existing address
                   </p>
                   <ul role="list">
-                    {user.addresses.map((address,index) => (
+                    {user.addresses.map((address, index) => (
                       <li
                         key={address.phone}
                         className="flex px-3 justify-between gap-x-6 py-5 border-solid border-2 border-gray-200"
                       >
                         <div className="flex min-w-0 gap-x-4">
                           <input
-                          onChange={handleAddress}
+                            onChange={handleAddress}
                             name="address"
                             value={index}
                             type="radio"
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
-                          
+
                           <div className="min-w-0 flex-auto">
                             <p className="text-sm font-semibold leading-6 text-gray-900">
                               {address.name}
@@ -251,7 +290,7 @@ function Checkout() {
                         </div>
                         <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                           <p className="text-sm leading-6 text-gray-900">
-                            Phone:  {address.phone}
+                            Phone: {address.phone}
                           </p>
                           <p className="text-sm leading-6 text-gray-900">
                             {address.pinCode}
@@ -274,9 +313,9 @@ function Checkout() {
                             id="cash"
                             name="payments"
                             onChange={handlePayment}
-                            value='cash'
+                            value="cash"
                             type="radio"
-                            checked={paymentMethod==="cash"}
+                            checked={paymentMethod === "cash"}
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
                           <label
@@ -291,9 +330,9 @@ function Checkout() {
                             id="card"
                             name="payments"
                             onChange={handlePayment}
-                            value='cash'
+                            value="card"
                             type="radio"
-                            checked={paymentMethod==="card"}
+                            checked={paymentMethod === "card"}
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
                           <label
@@ -311,108 +350,110 @@ function Checkout() {
             </form>
           </div>
           <div className="lg:col-span-2">
-          <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-            All Products
-          </h1>
-          <div className="flow-root">
-            <ul role="list" className="-my-6 divide-y divide-gray-200">
-              {items.map((product) => (
-                <li key={product.id} className="flex py-6">
-                  <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      className="h-full w-full object-cover object-center"
-                    />
+            <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+                  All Products
+                </h1>
+                <div className="flow-root">
+                  <ul role="list" className="-my-6 divide-y divide-gray-200">
+                    {items.map((product) => (
+                      <li key={product.id} className="flex py-6">
+                        <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                          <img
+                            src={product.thumbnail}
+                            alt={product.title}
+                            className="h-full w-full object-cover object-center"
+                          />
+                        </div>
+
+                        <div className="ml-4 flex flex-1 flex-col">
+                          <div>
+                            <div className="flex justify-between text-base font-medium text-gray-900">
+                              <h3>
+                                <a href={product.href}>{product.title}</a>
+                              </h3>
+                              <p className="ml-4">${product.price}</p>
+                            </div>
+                            <p className="mt-1 text-sm text-gray-500">
+                              {product.brand}
+                            </p>
+                          </div>
+                          <div className="flex flex-1 items-end justify-between text-sm">
+                            <div className="text-gray-500">
+                              <label
+                                htmlFor="quantity"
+                                className="inline mr-3 text-sm font-medium leading-6 text-gray-900"
+                              >
+                                Qty
+                              </label>
+                              <select
+                                onChange={(e) => handleQty(e, product)}
+                                value={product.quantity}
+                              >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                              </select>
+                            </div>
+
+                            <div className="flex">
+                              <button
+                                onClick={(e) => handleRemove(e, product.id)}
+                                type="button"
+                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                <div className="flex justify-between text-base font-medium text-gray-900">
+                  <p>Subtotal</p>
+                  <p>${totalAmount}</p>
+                </div>
+                <div className="flex my-5 justify-between text-base font-medium text-gray-900">
+                  <p>Total Items</p>
+                  <p>{totalItems} items</p>
+                </div>
+                <p className="mt-0.5 text-sm text-gray-500">
+                  Shipping and taxes calculated at checkout.
+                </p>
+                <div className="mt-6">
+                  <div
+                    href="#"
+                    onClick={handleOrder}
+                    className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                  >
+                    Order Now
                   </div>
-
-                  <div className="ml-4 flex flex-1 flex-col">
-                    <div>
-                      <div className="flex justify-between text-base font-medium text-gray-900">
-                        <h3>
-                          <a href={product.href}>{product.title}</a>
-                        </h3>
-                        <p className="ml-4">${product.price}</p>
-                      </div>
-                      <p className="mt-1 text-sm text-gray-500">
-                        {product.brand}
-                      </p>
-                    </div>
-                    <div className="flex flex-1 items-end justify-between text-sm">
-                      <div className="text-gray-500">
-                        <label
-                          htmlFor="quantity"
-                          className="inline mr-3 text-sm font-medium leading-6 text-gray-900"
-                        >
-                          Qty
-                        </label>
-                        <select onChange={(e)=>handleQty(e,product)}value={product.quantity}>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                        </select>
-                      </div>
-
-                      <div className="flex">
-                        <button
-                          onClick={(e)=>handleRemove(e,product.id)}
-                          type="button"
-                          className="font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-          <div className="flex justify-between text-base font-medium text-gray-900">
-            <p>Subtotal</p>
-            <p>${totalAmount}</p>
-          </div>
-          <div className="flex my-5 justify-between text-base font-medium text-gray-900">
-            <p>Total Items</p>
-            <p>{totalItems} items</p>
-          </div>
-          <p className="mt-0.5 text-sm text-gray-500">
-            Shipping and taxes calculated at checkout.
-          </p>
-          <div className="mt-6">
-            <div 
-              href="#"
-              onClick={handleOrder}
-              className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-            >
-              Order Now
+                </div>
+                <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                  <p>
+                    or <br />
+                    <Link to="/">
+                      <button
+                        type="button"
+                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                      >
+                        Continue Shopping
+                        <span aria-hidden="true"> &rarr;</span>
+                      </button>
+                    </Link>
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-            <p>
-              or <br />
-              <Link to='/'>
-              <button
-                type="button"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-                
-              >
-                Continue Shopping
-                <span aria-hidden="true"> &rarr;</span>
-              </button>
-              </Link>
-            </p>
-          </div>
-        </div>
-      </div>
           </div>
         </div>
       </div>

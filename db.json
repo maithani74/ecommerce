@@ -2587,6 +2587,78 @@
       "paymentMethod": "cash",
       "selectedAddress": null,
       "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "user": {
+        "email": "shivanshu981@gmail.com",
+        "password": "123",
+        "id": 1,
+        "addresses": [
+          {
+            "name": "Rahul",
+            "email": "maithanir74@gmail.com",
+            "phone": "06003639598",
+            "street": "lane no. 2",
+            "city": "Dehradun",
+            "state": "Uttarakhand",
+            "pincode": "248001"
+          },
+          {
+            "name": "Rahul",
+            "email": "maithanir74@gmail.com",
+            "phone": "06003639598",
+            "street": "lane no. 2",
+            "city": "Dehradun",
+            "state": "Uttarakhand",
+            "pincode": "248001"
+          },
+          {
+            "name": "Rahul",
+            "email": "maithanir74@gmail.com",
+            "phone": "06003639598",
+            "street": "lane no. 2",
+            "city": "Dehradun",
+            "state": "Uttarakhand",
+            "pincode": "248001"
+          }
+        ]
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "Rahul",
+        "email": "maithanir74@gmail.com",
+        "phone": "06003639598",
+        "street": "lane no. 2",
+        "city": "Dehradun",
+        "state": "Uttarakhand",
+        "pincode": "248001"
+      },
+      "status": "pending",
+      "id": 4
     }
   ]
 }

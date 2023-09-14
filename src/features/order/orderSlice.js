@@ -4,6 +4,7 @@ import { createOrder, fetchCount } from './orderApi';
 const initialState = {
   orders: [],
   status: 'idle',
+  currentOrder:null
 };
 
 export const createOrderAsync = createAsyncThunk(
@@ -34,12 +35,13 @@ export const counterSlice = createSlice({
       .addCase(createOrderAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.orders.push( action.payload)
+        state.currentOrder=action.payload;
       });
   },
 });
 
 export const { increment } = counterSlice.actions;
-
+export const selectCurrentOrder = (state)=>state.order.currentOrder
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
