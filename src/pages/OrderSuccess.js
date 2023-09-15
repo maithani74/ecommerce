@@ -1,7 +1,12 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import orderSlice from "../features/order/orderSlice";
+import { useEffect } from "react";
+import { resetCart } from "../features/cart/CartApi";
 function OrderSuccess() {
-  const params = useParams()
+  const params = useParams();
+  useEffect(()=>{
+    resetCart()
+  })
   return (
     <>
     {!params.id && <Navigate to='/' replace={true}></Navigate>}
