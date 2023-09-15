@@ -2371,247 +2371,48 @@
     },
     {
       "email": "maithani09@gmail.com",
-      "password": "Rahul@123",
+      "password": "123",
       "id": 2,
-      "addresses": []
+      "addresses": [
+        {
+          "name": "Rahul",
+          "email": "maithanir74@gmail.com",
+          "phone": "06003639598",
+          "street": "lane no. 2",
+          "city": "Dehradun",
+          "state": "Uttarakhand",
+          "pincode": "248001"
+        }
+      ]
     }
   ],
-  "cart": [
-    {
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/2/1.jpg",
-        "https://i.dummyjson.com/data/products/2/2.jpg",
-        "https://i.dummyjson.com/data/products/2/3.jpg",
-        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": 1,
-      "id": 1
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "items": [
         {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "title": "TC Reusable Silicone Magic Washing Gloves",
+          "description": "TC Reusable Silicone Magic Washing Gloves with Scrubber, Cleaning Brush Scrubber Gloves Heat Resistant Pair for Cleaning of Kitchen, Dishes, Vegetables and Fruits, Bathroom, Car Wash, Pet Care and Multipurpose",
+          "price": 29,
+          "discountPercentage": 3.19,
+          "rating": 4.98,
+          "stock": 42,
+          "brand": "TC Reusable",
+          "category": "automotive",
+          "thumbnail": "https://i.dummyjson.com/data/products/88/thumbnail.jpg",
           "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+            "https://i.dummyjson.com/data/products/88/1.jpg",
+            "https://i.dummyjson.com/data/products/88/2.jpg",
+            "https://i.dummyjson.com/data/products/88/3.jpg",
+            "https://i.dummyjson.com/data/products/88/4.webp",
+            "https://i.dummyjson.com/data/products/88/thumbnail.jpg"
           ],
           "quantity": 1,
           "user": 1,
           "id": 1
         }
       ],
-      "totalAmount": 899,
-      "totalItems": 1,
-      "user": {
-        "email": "shivanshu981@gmail.com",
-        "password": "123",
-        "id": 1,
-        "addresses": [
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          },
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          },
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          }
-        ]
-      },
-      "paymentMethod": "cash",
-      "selectedAddress": null,
-      "id": 1
-    },
-    {
-      "items": [
-        {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        }
-      ],
-      "totalAmount": 899,
-      "totalItems": 1,
-      "user": {
-        "email": "shivanshu981@gmail.com",
-        "password": "123",
-        "id": 1,
-        "addresses": [
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          },
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          },
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          }
-        ]
-      },
-      "paymentMethod": "cash",
-      "selectedAddress": null,
-      "id": 2
-    },
-    {
-      "items": [
-        {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        }
-      ],
-      "totalAmount": 899,
-      "totalItems": 1,
-      "user": {
-        "email": "shivanshu981@gmail.com",
-        "password": "123",
-        "id": 1,
-        "addresses": [
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          },
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          },
-          {
-            "name": "Rahul",
-            "email": "maithanir74@gmail.com",
-            "phone": "06003639598",
-            "street": "lane no. 2",
-            "city": "Dehradun",
-            "state": "Uttarakhand",
-            "pincode": "248001"
-          }
-        ]
-      },
-      "paymentMethod": "cash",
-      "selectedAddress": null,
-      "id": 3
-    },
-    {
-      "items": [
-        {
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        }
-      ],
-      "totalAmount": 899,
+      "totalAmount": 29,
       "totalItems": 1,
       "user": {
         "email": "shivanshu981@gmail.com",
@@ -2658,7 +2459,82 @@
         "pincode": "248001"
       },
       "status": "pending",
-      "id": 4
+      "id": 1
+    },
+    {
+      "items": [
+        {
+          "title": "women's shoes",
+          "description": "Close: Lace, Style with bottom: Increased inside, Sole Material: Rubber",
+          "price": 40,
+          "discountPercentage": 16.96,
+          "rating": 4.14,
+          "stock": 72,
+          "brand": "IELGY fashion",
+          "category": "womens-shoes",
+          "thumbnail": "https://i.dummyjson.com/data/products/46/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/46/1.webp",
+            "https://i.dummyjson.com/data/products/46/2.jpg",
+            "https://i.dummyjson.com/data/products/46/3.jpg",
+            "https://i.dummyjson.com/data/products/46/4.jpg",
+            "https://i.dummyjson.com/data/products/46/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        },
+        {
+          "title": "HP Pavilion 15-DK1056WM",
+          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+          "price": 1099,
+          "discountPercentage": 6.18,
+          "rating": 4.43,
+          "stock": 89,
+          "brand": "HP Pavilion",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+          "images": [
+            "https://i.dummyjson.com/data/products/10/1.jpg",
+            "https://i.dummyjson.com/data/products/10/2.jpg",
+            "https://i.dummyjson.com/data/products/10/3.jpg",
+            "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 2
+        }
+      ],
+      "totalAmount": 1139,
+      "totalItems": 2,
+      "user": {
+        "email": "maithani09@gmail.com",
+        "password": "123",
+        "id": 2,
+        "addresses": [
+          {
+            "name": "Rahul",
+            "email": "maithanir74@gmail.com",
+            "phone": "06003639598",
+            "street": "lane no. 2",
+            "city": "Dehradun",
+            "state": "Uttarakhand",
+            "pincode": "248001"
+          }
+        ]
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "Rahul",
+        "email": "maithanir74@gmail.com",
+        "phone": "06003639598",
+        "street": "lane no. 2",
+        "city": "Dehradun",
+        "state": "Uttarakhand",
+        "pincode": "248001"
+      },
+      "status": "pending",
+      "id": 2
     }
   ]
 }

@@ -14,6 +14,8 @@ import { selectLoggedInUser } from "./features/auth/authSlice";
 import { fetchItemsByUserIdAsync } from "./features/cart/CartSlice";
 import PageNotFound from "./pages/404";
 import OrderSuccess from "./pages/OrderSuccess";
+import UserOrders from "./features/user/component/UserOrders";
+import UserOrderPage from "./pages/UserOrderPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
   {
     path:'/order-success/:id',
     element:<OrderSuccess/>
+  },
+  {
+    path:'/orders',
+    element:<UserOrderPage/>
   }
 ]);
 function App() {

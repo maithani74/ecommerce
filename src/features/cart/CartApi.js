@@ -44,11 +44,9 @@ export function deleteItemFromCart(itemId) {
 
 export async function resetCart(userId) {
   return new Promise(async (resolve)=>{
-
-  
   const res= await fetchItemsByUserId(userId)
   const items = res.data;
-  for(let item in items){
+  for(let item of items){
     await deleteItemFromCart(item.id)
   }
   resolve({status:'success'})
