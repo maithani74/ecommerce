@@ -16,6 +16,7 @@ import {
   createOrderAsync,
   selectCurrentOrder,
 } from "../features/order/orderSlice";
+import { selectUserInfo } from "../features/user/userSlice";
 function Checkout() {
   const [open, setOpen] = useState(true);
   const items = useSelector(selectItems);
@@ -25,7 +26,7 @@ function Checkout() {
   );
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
   const handleQty = (e, item) => {
     dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
   };

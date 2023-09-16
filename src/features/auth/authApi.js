@@ -31,14 +31,10 @@ export function checkUser(loginInfo) {
   });
 }
 
-export function updateUser(update) {
+
+export function signOut(userId) {
   return new Promise(async (resolve) => {
-    const res = await fetch("http://localhost:8080/users/"+update.id,{
-      method:"PATCH",
-      body:JSON.stringify(update),
-      headers:{"content-type":"application/json"}
-    });
-    const data = await res.json();
-    resolve({data});
+    
+    resolve({data:"success"});
   });
 }

@@ -2357,15 +2357,6 @@
           "city": "Dehradun",
           "state": "Uttarakhand",
           "pincode": "248001"
-        },
-        {
-          "name": "Rahul",
-          "email": "maithanir74@gmail.com",
-          "phone": "06003639598",
-          "street": "lane no. 2",
-          "city": "Dehradun",
-          "state": "Uttarakhand",
-          "pincode": "248001"
         }
       ]
     },
@@ -2535,6 +2526,61 @@
       },
       "status": "pending",
       "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "Women Sweaters Wool",
+          "description": "2021 Custom Winter Fall Zebra Knit Crop Top Women Sweaters Wool Mohair Cos Customize Crew Neck Women' S Crop Top Sweater",
+          "price": 600,
+          "discountPercentage": 17.2,
+          "rating": 4.55,
+          "stock": 55,
+          "brand": "Top Sweater",
+          "category": "tops",
+          "thumbnail": "https://i.dummyjson.com/data/products/39/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/39/1.jpg",
+            "https://i.dummyjson.com/data/products/39/2.jpg",
+            "https://i.dummyjson.com/data/products/39/3.jpg",
+            "https://i.dummyjson.com/data/products/39/4.jpg",
+            "https://i.dummyjson.com/data/products/39/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 600,
+      "totalItems": 1,
+      "user": {
+        "email": "maithani09@gmail.com",
+        "password": "123",
+        "id": 2,
+        "addresses": [
+          {
+            "name": "Rahul",
+            "email": "maithanir74@gmail.com",
+            "phone": "06003639598",
+            "street": "lane no. 2",
+            "city": "Dehradun",
+            "state": "Uttarakhand",
+            "pincode": "248001"
+          }
+        ]
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "Rahul",
+        "email": "maithanir74@gmail.com",
+        "phone": "06003639598",
+        "street": "lane no. 2",
+        "city": "Dehradun",
+        "state": "Uttarakhand",
+        "pincode": "248001"
+      },
+      "status": "pending",
+      "id": 3
     }
   ]
 }
