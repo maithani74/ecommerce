@@ -2339,6 +2339,7 @@
       "email": "shivanshu981@gmail.com",
       "password": "123",
       "id": 1,
+      "role": "user",
       "addresses": [
         {
           "name": "Rahul",
@@ -2364,6 +2365,7 @@
       "email": "maithani09@gmail.com",
       "password": "123",
       "id": 2,
+      "role": "user",
       "addresses": [
         {
           "name": "Rahul",
@@ -2375,6 +2377,14 @@
           "pincode": "248001"
         }
       ]
+    },
+    
+    {
+      "email": "priyanshubhandari2005@gmail.com",
+      "password": "123",
+      "addresses": [],
+      "role": "admin",
+      "id": 3
     }
   ],
   "cart": [],
