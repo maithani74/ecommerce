@@ -358,7 +358,9 @@ export default function  AdminProductList() {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* This is our products list  */}
+                        
                 <div className="bg-white">
+                <button className="mt-3 flex  w-60 items-center justify-center rounded-md border border-transparent mx-9 bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ">Edit</button>
                   <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       {products.map((product) => (
@@ -402,12 +404,13 @@ export default function  AdminProductList() {
                                 </p>
                               </div>
                             </div>
-                  <button className="rounded-md my-3 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white ">Edit</button>
-
+                  
                           </div>
+                          <button className="mt-3 flex  items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ">Edit</button>
                         </Link>
                       ))}
                     </div>
+
                   </div>
                 </div>
               </div>
