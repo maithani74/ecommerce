@@ -3,9 +3,9 @@ import "./App.css";
 import Home from "./pages/Home";
 import LoginPage from "./pages/Loginpage";
 import SignUppage from "./pages/SignUppage";
-import { Link, RouterProvider,createBrowserRouter } from "react-router-dom";
+import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Cart } from "./features/cart/Cart";
-import CartPage from './pages/CartPage'
+import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import Protected from "./features/auth/component/Protected";
@@ -16,18 +16,23 @@ import PageNotFound from "./pages/404";
 import OrderSuccess from "./pages/OrderSuccess";
 import UserOrders from "./features/user/component/UserOrders";
 import UserOrderPage from "./pages/UserOrderPage";
-import UserProfile from './features/user/component/UserProfile'
+import UserProfile from "./features/user/component/UserProfile";
 import UserProfilePage from "./pages/UserProfilePage";
 import { fetchLoggedInUserAsync } from "./features/user/userSlice";
 import Logout from "./features/auth/component/Logout";
-import ForgotPasswordPage from './pages/ForgotPasswordPage'
-import AdminProductDetailtPage from "./pages/AdminProductDetailPage copy";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import AdminProductDetailtPage from "./pages/AdminProductDetailPage";
 import AdminProductListPage from "./pages/AdminProductListPage";
-import ProtectedAdmin from './features/auth/component/ProtectedAdmin'
+import ProtectedAdmin from "./features/auth/component/ProtectedAdmin";
+import AdminProductFromPage from "./pages/AdminProductFormPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Protected><Home /></Protected> ,
+    element: (
+      <Protected>
+        <Home />
+      </Protected>
+    ),
   },
   {
     path: "/login",
@@ -35,12 +40,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/productDetail/:id",
-    element: 
-    <ProtectedAdmin><AdminProductDetailtPage /></ProtectedAdmin> ,
+    element: (
+      <ProtectedAdmin>
+        <AdminProductDetailtPage />
+      </ProtectedAdmin>
+    ),
   },
   {
     path: "/admin",
-    element:<ProtectedAdmin><AdminProductListPage /></ProtectedAdmin> ,
+    element: (
+      <ProtectedAdmin>
+        <AdminProductListPage />
+      </ProtectedAdmin>
+    ),
   },
   {
     path: "/signup",
@@ -48,52 +60,68 @@ const router = createBrowserRouter([
   },
   {
     path: "/cart",
-    element: 
-    <Protected><CartPage/></Protected> 
-    
+    element: (
+      <Protected>
+        <CartPage />
+      </Protected>
+    ),
   },
   {
     path: "/checkout",
-    element: <Checkout/>
+    element: <Checkout />,
   },
   {
     path: "/productDetail/:id",
-    element:
-    <Protected> <ProductDetailPage/></Protected> 
+    element: (
+      <Protected>
+        {" "}
+        <AdminProductDetailtPage />
+      </Protected>
+    ),
   },
   {
-    path:"*",
-    element: <PageNotFound/>
+    path: "/admin/product-form",
+    element: (
+      <Protected>
+        {" "}
+        <AdminProductFromPage />
+      </Protected>
+    ),
   },
   {
-    path:'/order-success/:id',
-    element:<OrderSuccess/>
+    path: "*",
+    element: <PageNotFound />,
   },
   {
-    path:'/orders',
-    element:<UserOrderPage/>
-  },{
-    path:'/profile',
-    element: <UserProfilePage/>
+    path: "/order-success/:id",
+    element: <OrderSuccess />,
   },
   {
-    path:'/logout',
-    element:<Logout/>
-  },{
-    path:'/forgot-password',
-    element: <ForgotPasswordPage/>
-  }
+    path: "/orders",
+    element: <UserOrderPage />,
+  },
+  {
+    path: "/profile",
+    element: <UserProfilePage />,
+  },
+  {
+    path: "/logout",
+    element: <Logout />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPasswordPage />,
+  },
 ]);
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
-  useEffect(()=>{
-    if(user){
+  useEffect(() => {
+    if (user) {
       dispatch(fetchItemsByUserIdAsync(user.id));
       dispatch(fetchLoggedInUserAsync(user.id));
     }
-    
-  },[dispatch,user])
+  }, [dispatch, user]);
   return (
     <div className="App">
       <RouterProvider router={router} />
